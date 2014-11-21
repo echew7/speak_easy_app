@@ -2,15 +2,12 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#ff0000" >
+    android:background="#fff" >
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Missed Words Fragment"
-        android:layout_marginLeft="16dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentRight="true"/>
+    <ListView
+        android:id="@+id/missed_words_list"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    </ListView>
 
 </RelativeLayout>

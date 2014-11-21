@@ -1,15 +1,15 @@
 package speakeasy.com.speakeasy;
 
+import android.app.ActionBar;
+import android.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
-import android.view.Menu;
+import android.util.Log;
 import android.view.MenuItem;
 
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
 
-public class MainActivity extends FragmentActivity {
-
-    TabsAdapter tabsAdapter = null;
     ViewPager activityTabs = null;
 
     @Override
@@ -17,30 +17,69 @@ public class MainActivity extends FragmentActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         activityTabs = (ViewPager) findViewById(R.id.activity_tabs);
-        tabsAdapter = new TabsAdapter(getSupportFragmentManager());
-        activityTabs.setAdapter(tabsAdapter);
+
+        final ActionBar actionBar=getActionBar();
+        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+        addTabs(actionBar);
+        activityTabs.setAdapter(new TabsAdapter(getSupportFragmentManager()));
+
+        activityTabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i2) {
+                Log.d("Main Activity","onPageScrolled "+i+" "+v+" "+i2);
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                actionBar.setSelectedNavigationItem(i);
+                Log.d("Main Activity","onPageSelected "+i);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+                if(i==ViewPager.SCROLL_STATE_IDLE)
+                    Log.d("Main Activity","onPageScrollStateChanged scroll state idle "+i);
+                if(i==ViewPager.SCROLL_STATE_DRAGGING)
+                    Log.d("Main Activity","onPageScrollStateChanged scroll state dragging "+i);
+                if(i==ViewPager.SCROLL_STATE_SETTLING)
+                    Log.d("Main Activity","onPageScrollStateChanged scroll state settling "+i);
+            }
+        });
+
     }
 
-
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
+    public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+        activityTabs.setCurrentItem(tab.getPosition());
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
+    public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
+    }
 
-        return super.onOptionsItemSelected(item);
+    @Override
+    public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+
+    }
+
+    private void addTabs(ActionBar actionBar)
+    {
+        ActionBar.Tab tab1=actionBar.newTab();
+        tab1.setIcon(R.drawable.progress_tab);
+        tab1.setTabListener(this);
+
+        ActionBar.Tab tab2=actionBar.newTab();
+        tab2.setIcon(R.drawable.missed_words_tab);
+        tab2.setTabListener(this);
+
+        ActionBar.Tab tab3=actionBar.newTab();
+        tab3.setIcon(R.drawable.transcripts_tab);
+        tab3.setTabListener(this);
+
+
+        actionBar.addTab(tab1);
+        actionBar.addTab(tab2);
+        actionBar.addTab(tab3);
     }
 }

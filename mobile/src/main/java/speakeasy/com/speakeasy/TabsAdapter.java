@@ -2,13 +2,13 @@ package speakeasy.com.speakeasy;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentStatePagerAdapter;
+import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
 
 /**
  * Created by Eric on 11/19/14.
  */
-public class TabsAdapter extends FragmentStatePagerAdapter {
+public class TabsAdapter extends FragmentPagerAdapter {
     public TabsAdapter(FragmentManager fm) {
         super(fm);
     }
@@ -24,8 +24,6 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
                 return new MissedWordsFragment();
             case 2:
                 return new TranscriptFragment();
-            case 3:
-                return new PracticeFragment();
         }
         return fragment;
     }
@@ -33,6 +31,6 @@ public class TabsAdapter extends FragmentStatePagerAdapter {
     @Override
     public int getCount() {
         Log.d("TabsAdapter", "Getting count");
-        return 4;
+        return 3;
     }
 }
