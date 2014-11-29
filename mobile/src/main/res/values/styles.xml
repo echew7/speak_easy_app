@@ -4,6 +4,7 @@
     <style name="AppTheme" parent="android:Theme.Holo.Light">
         <!-- Customize your theme here. -->
         <item name="android:actionBarStyle">@style/ActionBar</item>
+
     </style>
 
     <style name="ActionBar" parent="android:style/Widget.Holo.ActionBar">

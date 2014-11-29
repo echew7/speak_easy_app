@@ -8,7 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MenuItem;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener, TranscriptFragment.OnTranscriptSelectedListener {
 
     ViewPager activityTabs = null;
 
@@ -81,5 +81,22 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         actionBar.addTab(tab1);
         actionBar.addTab(tab2);
         actionBar.addTab(tab3);
+    }
+
+    @Override
+    public void onTranscriptSelected(Transcript transcript) {
+        TranscriptImageFragment imageFragment = new TranscriptImageFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(TranscriptImageFragment.TRANSCRIPT, transcript);
+        imageFragment.setArguments(args);
+
+        android.support.v4.app.FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.transcript_container, imageFragment);
+        transaction.addToBackStack(null);
+
+        transaction.commit();
+
+
+
     }
 }

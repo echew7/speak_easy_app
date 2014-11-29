@@ -1,25 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/transcript_fragment"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#fff">
 
-    <FrameLayout
-        android:id="@+id/transcript_content_wrapper"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:background="#9AD7CA"
-        >
-        <ImageView
-            android:id="@+id/transcript_content"
-            android:scaleType="fitXY"
-            android:layout_width="fill_parent"
-            android:layout_height="175dp" />
-    </FrameLayout>
-
     <ListView
         android:id="@+id/transcript_list"
-        android:layout_below="@id/transcript_content_wrapper"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

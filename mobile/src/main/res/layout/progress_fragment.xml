@@ -6,18 +6,84 @@
     android:orientation="vertical"
     android:background="#fff" >
 
-    <ImageView
-        android:id="@+id/new_words_graph"
-        android:src="@drawable/new_words_graph"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="220dp"
-        android:layout_marginTop="30dp" >
-    </ImageView>
-    <ImageView
-        android:id="@+id/missed_words_graph"
-        android:src="@drawable/missed_words_graph"
-        android:layout_width="match_parent"
-        android:layout_height="220dp">
-    </ImageView>
+        android:layout_height="wrap_content">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:padding="20dp"
+            android:orientation="vertical">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="New Words Used"
+                    android:textSize="24dp"
+                    android:textColor="#3498db"
+                    android:fontFamily="Verdana"/>
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="240dp"
+                    android:scrollbarAlwaysDrawHorizontalTrack="true">
+                    <ImageView
+                        android:id="@+id/new_words_image"
+                        android:src="@drawable/new_words_daily"
+                        android:layout_width="485dp"
+                        android:adjustViewBounds="true"
+                        android:layout_height="match_parent"
+                        android:scaleType="fitStart"/>
+                </HorizontalScrollView>
+
+                <Spinner
+                    android:id="@+id/new_words_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginBottom="20dp"
+                android:gravity="center_horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Mispronounced Words"
+                    android:textSize="24dp"
+                    android:textColor="#3498db"
+                    android:fontFamily="Verdana"/>
+
+                <HorizontalScrollView
+                    android:layout_width="wrap_content"
+                    android:layout_height="240dp"
+                    android:scrollbarAlwaysDrawHorizontalTrack="true">
+                    <ImageView
+                        android:id="@+id/missed_words_image"
+                        android:src="@drawable/new_words_daily"
+                        android:layout_width="485dp"
+                        android:layout_height="match_parent"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitStart"/>
+                </HorizontalScrollView>
+
+                <Spinner
+                    android:id="@+id/missed_words_spinner"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </LinearLayout>

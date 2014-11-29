@@ -23,7 +23,7 @@ public class TabsAdapter extends FragmentPagerAdapter {
             case 1:
                 return new MissedWordsFragment();
             case 2:
-                return new TranscriptFragment();
+                return new TranscriptContainerFragment();
         }
         return fragment;
     }

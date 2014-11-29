@@ -35,4 +35,5 @@ public class TranscriptItemAdapter extends ArrayAdapter<Transcript> {
         transcriptTitleText.setText(transcript.getTitle());
         return rowView;
     }
+
 }

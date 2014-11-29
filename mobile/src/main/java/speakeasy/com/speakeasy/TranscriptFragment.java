@@ -3,6 +3,7 @@ package speakeasy.com.speakeasy;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.util.Log;
@@ -19,6 +20,28 @@ import android.widget.ListView;
  */
 public class TranscriptFragment extends Fragment {
 
+
+    OnTranscriptSelectedListener callback;
+
+    public interface OnTranscriptSelectedListener {
+        public void onTranscriptSelected(Transcript transcript);
+    }
+
+
+    @Override
+    public void onAttach(Activity activity) {
+        super.onAttach(activity);
+
+        // This makes sure that the container activity has implemented
+        // the callback interface. If not, it throws an exception
+        try {
+            callback = (OnTranscriptSelectedListener) activity;
+        } catch (ClassCastException e) {
+            throw new ClassCastException(activity.toString()
+                    + " must implement OnTranscriptSelectedListener");
+        }
+    }
+
     private List<Transcript> transcripts;
 
     @Override
@@ -26,14 +49,14 @@ public class TranscriptFragment extends Fragment {
         super.onCreate(savedInstanceState);
 
         transcripts = new ArrayList<Transcript>();
-        transcripts.add(new Transcript("El Tressider", getResources().getDrawable(R.drawable.el_tressider)));
-        transcripts.add(new Transcript("La Panda Express", getResources().getDrawable(R.drawable.la_panda_express)));
-        transcripts.add(new Transcript("El Bar", getResources().getDrawable(R.drawable.el_tressider)));
-        transcripts.add(new Transcript("Playa del Carmen", getResources().getDrawable(R.drawable.la_panda_express)));
-        transcripts.add(new Transcript("Palenque", getResources().getDrawable(R.drawable.el_tressider)));
-        transcripts.add(new Transcript("Tulum", getResources().getDrawable(R.drawable.la_panda_express)));
-        transcripts.add(new Transcript("Teotihuacan", getResources().getDrawable(R.drawable.el_tressider)));
-        transcripts.add(new Transcript("Cabo San Lucas", getResources().getDrawable(R.drawable.la_panda_express)));
+        transcripts.add(new Transcript("El Centro Comercial", getResources().getDrawable(R.drawable.shopping)));
+        transcripts.add(new Transcript("Casa Zapata", getResources().getDrawable(R.drawable.door)));
+        transcripts.add(new Transcript("Subway", getResources().getDrawable(R.drawable.restaurant)));
+        transcripts.add(new Transcript("Playa del Carmen", getResources().getDrawable(R.drawable.shopping)));
+        transcripts.add(new Transcript("Palenque", getResources().getDrawable(R.drawable.door)));
+        transcripts.add(new Transcript("Tulum", getResources().getDrawable(R.drawable.restaurant)));
+        transcripts.add(new Transcript("Teotihuacan", getResources().getDrawable(R.drawable.shopping)));
+        transcripts.add(new Transcript("Cabo San Lucas", getResources().getDrawable(R.drawable.door)));
 
 
     }
@@ -43,7 +66,6 @@ public class TranscriptFragment extends Fragment {
         Log.d("Transcript Fragment", "onCreateView");
         View view = inflater.inflate(R.layout.transcript_fragment, container, false);
 
-        final ImageView transcriptContent = (ImageView) view.findViewById(R.id.transcript_content);
         ListView transcriptsList = (ListView) view.findViewById(R.id.transcript_list);
         TranscriptItemAdapter transcriptItemAdapter =
                 new TranscriptItemAdapter(this.getActivity(), R.layout.transcript_item, transcripts);
@@ -51,9 +73,11 @@ public class TranscriptFragment extends Fragment {
         transcriptsList.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                transcriptContent.setImageDrawable(transcripts.get(position).getContent());
+                //transcriptContent.setImageDrawable(transcripts.get(position).getContent());
+                callback.onTranscriptSelected(transcripts.get(position));
             }
         });
         return view;
     }
+
 }

@@ -4,5 +4,10 @@
     <string name="app_name">SpeakEasy</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string-array name="time_choices_array">
+        <item>By day</item>
+        <item>By month</item>
+    </string-array>
+
 
 </resources>

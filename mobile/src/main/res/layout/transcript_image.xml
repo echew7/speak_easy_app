@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/transcript_image_fragment"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:id="@+id/transcript_image_view"
+            android:layout_height="wrap_content"
+            android:layout_width="fill_parent"
+            android:adjustViewBounds="true"
+            />
+    </ScrollView>
+
+
+</LinearLayout>
