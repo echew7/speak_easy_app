@@ -4,5 +4,5 @@
     <string name="app_name">SpeakEasy</string>
     <string name="title_activity_main">Hello World Immersion</string>
     <string name="hello_world">Hello world!</string>
-
+    <string name="glass_voice_trigger">Start SpeakEasy</string>
 </resources>
