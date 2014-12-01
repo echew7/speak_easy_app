@@ -8,7 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.MenuItem;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener, TranscriptFragment.OnTranscriptSelectedListener {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener, TranscriptListFragment.OnTranscriptSelectedListener {
 
     ViewPager activityTabs = null;
 
@@ -26,7 +26,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         activityTabs.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int i, float v, int i2) {
-                Log.d("Main Activity","onPageScrolled "+i+" "+v+" "+i2);
+                Log.d("Main Activity","onPageScrolled "+ i + " " + v + " " + i2);
             }
 
             @Override

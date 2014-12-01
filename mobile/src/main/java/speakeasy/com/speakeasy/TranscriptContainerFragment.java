@@ -14,9 +14,9 @@ public class TranscriptContainerFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.transcript_container, container, false);
 
-        TranscriptFragment transcriptFragment = new TranscriptFragment();
+        TranscriptListFragment transcriptListFragment = new TranscriptListFragment();
         getActivity().getSupportFragmentManager().beginTransaction()
-                .add(R.id.transcript_container, transcriptFragment).commit();
+                .add(R.id.transcript_container, transcriptListFragment).commit();
 
 
         return view;

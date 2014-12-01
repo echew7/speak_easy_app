@@ -18,10 +18,11 @@ import android.widget.ListView;
 /**
  * Created by Eric on 11/18/14.
  */
-public class TranscriptFragment extends Fragment {
+public class TranscriptListFragment extends Fragment {
 
 
     OnTranscriptSelectedListener callback;
+    private List<Transcript> transcripts;
 
     public interface OnTranscriptSelectedListener {
         public void onTranscriptSelected(Transcript transcript);
@@ -41,8 +42,6 @@ public class TranscriptFragment extends Fragment {
                     + " must implement OnTranscriptSelectedListener");
         }
     }
-
-    private List<Transcript> transcripts;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -64,16 +63,15 @@ public class TranscriptFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         Log.d("Transcript Fragment", "onCreateView");
-        View view = inflater.inflate(R.layout.transcript_fragment, container, false);
+        View view = inflater.inflate(R.layout.transcript_list_fragment, container, false);
 
-        ListView transcriptsList = (ListView) view.findViewById(R.id.transcript_list);
+        ListView transcriptList = (ListView) view.findViewById(R.id.transcript_list);
         TranscriptItemAdapter transcriptItemAdapter =
                 new TranscriptItemAdapter(this.getActivity(), R.layout.transcript_item, transcripts);
-        transcriptsList.setAdapter(transcriptItemAdapter);
-        transcriptsList.setOnItemClickListener(new ListView.OnItemClickListener() {
+        transcriptList.setAdapter(transcriptItemAdapter);
+        transcriptList.setOnItemClickListener(new ListView.OnItemClickListener() {
             public void onItemClick(AdapterView<?> parent, View v,
                                     int position, long id) {
-                //transcriptContent.setImageDrawable(transcripts.get(position).getContent());
                 callback.onTranscriptSelected(transcripts.get(position));
             }
         });
