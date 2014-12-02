@@ -22,6 +22,21 @@
                 android:name="com.google.android.glass.VoiceTrigger"
                 android:resource="@xml/speakeasy_show" />
         </activity>
+        <activity
+            android:name="speakeasy.com.speakeasy.TutorialActivity"
+            android:icon="@drawable/ic_glass_logo"
+            android:label="@string/title_activity_tutorial" >
+        </activity>
+        <activity
+            android:name="speakeasy.com.speakeasy.PhrasesActivity"
+            android:icon="@drawable/ic_glass_logo"
+            android:label="@string/title_activity_phrases" >
+        </activity>
+        <activity
+            android:name="speakeasy.com.speakeasy.TranslationActivity"
+            android:icon="@drawable/ic_glass_logo"
+            android:label="@string/title_activity_translation" >
+        </activity>
     </application>
 
 </manifest>
