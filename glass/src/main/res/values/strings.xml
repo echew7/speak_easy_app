@@ -5,7 +5,8 @@
     <string name="hello_world">Hello world!</string>
 
     <!-- Activity Titles -->
-    <string name="title_activity_main">Menu</string>
+    <string name="title_activity_base">Base</string>
+    <string name="title_activity_main">Main</string>
     <string name="title_activity_tutorial">Tutorial</string>
     <string name="title_activity_phrases">Phrases</string>
     <string name="title_activity_translation">Translation</string>

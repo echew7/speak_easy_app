@@ -23,6 +23,11 @@
                 android:resource="@xml/speakeasy_show" />
         </activity>
         <activity
+            android:name="speakeasy.com.speakeasy.BaseSpeakEasyActivity"
+            android:icon="@drawable/ic_glass_logo"
+            android:label="@string/title_activity_base" >
+        </activity>
+        <activity
             android:name="speakeasy.com.speakeasy.TutorialActivity"
             android:icon="@drawable/ic_glass_logo"
             android:label="@string/title_activity_tutorial" >
