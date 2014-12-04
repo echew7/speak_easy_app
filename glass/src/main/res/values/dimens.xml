@@ -16,7 +16,16 @@
     <!-- The maximum height of the body content inside a card. -->
     <dimen name="glass_card_body_height">240px</dimen>
 
+    <!-- The maximum height of the body content inside a card. -->
+    <dimen name="glass_card_body_height_no_footer">280px</dimen>
+
     <!-- The width of the left column in the two-column layout. -->
     <dimen name="glass_card_left_column_width">240px</dimen>
+
+    <!-- The height of a suggested phrase item. -->
+    <dimen name="suggested_phrase_item_height">40dip</dimen>
+
+    <!-- The margins around the current phrase. -->
+    <dimen name="current_phrase_margins">15dip</dimen>
 
 </resources>

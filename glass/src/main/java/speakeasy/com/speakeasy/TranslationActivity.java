@@ -11,7 +11,7 @@ public class TranslationActivity extends BaseSpeakEasyActivity {
     @Override
     protected void onCreate(Bundle bundle) {
         super.onCreate(bundle);
-        setContentView(R.layout.phrases_activity);
+        setContentView(R.layout.translation_activity);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 

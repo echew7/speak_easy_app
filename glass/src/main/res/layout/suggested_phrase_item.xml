@@ -1,0 +1,17 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/suggested_phrase_item"
+    android:layout_width="fill_parent"
+    android:layout_height="@dimen/suggested_phrase_item_height" >
+
+    <TextView
+        android:id="@+id/suggested_phrase"
+        android:layout_width="fill_parent"
+        android:layout_height="30dip"
+        android:layout_centerVertical="true"
+        android:gravity="center"
+        android:ellipsize="marquee"
+        android:singleLine="true"
+        android:textColor="#3498db"
+        android:textSize="26sp"/>
+
+</RelativeLayout> 

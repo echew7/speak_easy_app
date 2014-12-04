@@ -1,5 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent" android:layout_height="match_parent">
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
 
-</RelativeLayout>
+    <RelativeLayout
+        android:id="@+id/body_layout"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/glass_card_body_height_no_footer"
+        android:layout_marginLeft="@dimen/glass_card_margin"
+        android:layout_marginTop="@dimen/glass_card_margin"
+        android:layout_marginRight="@dimen/glass_card_margin"
+        android:layout_marginBottom="@dimen/glass_card_margin"
+        tools:ignore="UselessLeaf"
+        >
+
+        <TextView
+            android:id="@+id/current_phrase"
+            android:layout_marginTop="@dimen/current_phrase_margins"
+            android:layout_margin="@dimen/current_phrase_margins"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:ellipsize="end"
+            android:singleLine="true"
+            android:gravity="center"
+            android:textSize="32sp"
+        />
+
+        <TextSwitcher
+            android:id="@+id/prev_phrase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/current_phrase"
+            />
+
+        <speakeasy.com.speakeasy.SuggestedPhrasesListView
+            android:id="@+id/suggested_phrases"
+            android:layout_width="fill_parent"
+            android:layout_height="@dimen/suggested_phrase_item_height"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/prev_phrase"
+            android:ellipsize="end"
+            />
+
+        <TextSwitcher
+            android:id="@+id/next_phrase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_below="@id/suggested_phrases"
+            android:ellipsize="end"
+            android:textColor="#803498db"
+            android:singleLine="true"
+            />
+
+    </RelativeLayout>
+</FrameLayout>

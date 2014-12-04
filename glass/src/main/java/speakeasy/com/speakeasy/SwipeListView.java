@@ -1,82 +1,79 @@
 package speakeasy.com.speakeasy;
 
-import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
+import android.util.AttributeSet;
 import android.view.MotionEvent;
+import android.widget.ListView;
 
 import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.touchpad.GestureDetector;
 
 /**
- * Created by Eric on 12/2/14.
+ * Created by Eric on 12/3/14.
  */
-public class BaseSpeakEasyActivity extends Activity {
+public class SwipeListView extends ListView {
+
+    private Context context;
     private GestureDetector mGestureDetector;
+    private int rowHeight;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        mGestureDetector = createGestureDetector(this);
+    final static private int ANIMATION_TIME = 1000;
+
+    public SwipeListView(Context context, AttributeSet attrs, int defStyle) {
+        super(context, attrs, defStyle);
+        this.context = context;
+        initializeList();
+
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        super.onCreateOptionsMenu(menu);
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+    public SwipeListView(Context context, AttributeSet attrs) {
+        super(context, attrs);
+        this.context = context;
+        initializeList();
     }
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
+    public SwipeListView(Context context) {
+        super(context);
+        this.context = context;
+        initializeList();
+    }
 
-        switch (item.getItemId()) {
-            case R.id.tutorial_mode:
-                // Tutorial selected
-                Intent tutorial = new Intent(this, TutorialActivity.class);
-                startActivity(tutorial);
-                break;
-            case R.id.phrases_mode:
-                // Phrases selected
-                Intent phrases = new Intent(this, PhrasesActivity.class);
-                startActivity(phrases);
-                break;
-            case R.id.translation_mode:
-                // Translation selected
-                Intent translation = new Intent(this, TranslationActivity.class);
-                startActivity(translation);
-                break;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-        // Call to finish() as to destroy current activity before transitioning to next activity
-        // so activity stack does not grow infinitely large
-        finish();
-        return true;
+    public void setRowHeight(int height) {
+        rowHeight = height;
+    }
+
+    public void smoothScrollToNextItem() {
+        smoothScrollBy(rowHeight, ANIMATION_TIME);
+    }
+
+    public void smoothScrollToPreviousItem() {
+        smoothScrollBy(-rowHeight, ANIMATION_TIME);
+    }
+
+    private void initializeList() {
+        mGestureDetector = createGestureDetector(context);
     }
 
     private GestureDetector createGestureDetector(Context context) {
         GestureDetector gestureDetector = new GestureDetector(context);
         //Create a base listener for generic gestures
-        gestureDetector.setBaseListener( new GestureDetector.BaseListener() {
+        gestureDetector.setBaseListener(new GestureDetector.BaseListener() {
             @Override
             public boolean onGesture(Gesture gesture) {
+
                 if (gesture == Gesture.TAP) {
                     // do something on tap
                     return true;
                 } else if (gesture == Gesture.TWO_TAP) {
                     // do something on two finger tap
-                    openOptionsMenu();
                     return true;
                 } else if (gesture == Gesture.SWIPE_RIGHT) {
                     // do something on right (forward) swipe
+                    smoothScrollToNextItem();
                     return true;
                 } else if (gesture == Gesture.SWIPE_LEFT) {
                     // do something on left (backwards) swipe
+                    smoothScrollToPreviousItem();
                     return true;
                 }
                 return false;
@@ -103,10 +100,10 @@ public class BaseSpeakEasyActivity extends Activity {
      */
     @Override
     public boolean onGenericMotionEvent(MotionEvent event) {
+        super.onGenericMotionEvent(event);
         if (mGestureDetector != null) {
             return mGestureDetector.onMotionEvent(event);
         }
         return false;
     }
-
 }

@@ -6,12 +6,12 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/ic_launcher"
+        android:icon="@drawable/speak_easy_icon"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
             android:name="speakeasy.com.speakeasy.MainActivity"
-            android:icon="@drawable/ic_glass_logo"
+            android:icon="@drawable/speak_easy_icon"
             android:label="@string/title_activity_main" >
             <intent-filter>
                 <action android:name="com.google.android.glass.action.VOICE_TRIGGER" />
