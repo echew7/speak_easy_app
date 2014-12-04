@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Use the constants defined in the ContextualMenus.Command enum-->
+    <item
+        android:id="@+id/thank_you"
+        android:title="muchas gracias">
+    </item>
+    <item
+        android:id="@+id/how_are_you"
+        android:title="hola como estas">
+    </item>
+</menu>
