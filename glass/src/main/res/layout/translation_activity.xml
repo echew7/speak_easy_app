@@ -7,5 +7,14 @@
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Translating..."
         />
+
+    <ImageView
+        android:layout_below="@id/translation_text_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="25dp"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_microphone_on_40"/>
 </RelativeLayout>

@@ -2,20 +2,17 @@ package speakeasy.com.speakeasy;
 
 import android.content.Context;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.MotionEvent;
 import android.view.WindowManager;
-import android.widget.TextView;
 
 import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.touchpad.GestureDetector;
-import com.google.android.glass.view.WindowUtils;
 
 /**
  * Created by Eric on 12/2/14.
  */
 public class TranslationActivity extends BaseSpeakEasyActivity {
+
     private GestureDetector mGestureDetector;
 
     String spanishText;
@@ -26,9 +23,11 @@ public class TranslationActivity extends BaseSpeakEasyActivity {
         super.onCreate(bundle);
         setContentView(R.layout.translation_activity);
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
-        getWindow().requestFeature(WindowUtils.FEATURE_VOICE_COMMANDS);
+        //getWindow().requestFeature(WindowUtils.FEATURE_VOICE_COMMANDS);
         mGestureDetector = createGestureDetector(this);
     }
+
+    /*
 
     @Override
     public boolean onCreatePanelMenu(int featureId, Menu menu) {
@@ -68,7 +67,7 @@ public class TranslationActivity extends BaseSpeakEasyActivity {
         // Good practice to pass through to super if not handled
         return super.onMenuItemSelected(featureId, item);
     }
-
+    */
 
     private GestureDetector createGestureDetector(Context context) {
         GestureDetector gestureDetector = new GestureDetector(context);
@@ -77,6 +76,7 @@ public class TranslationActivity extends BaseSpeakEasyActivity {
             @Override
             public boolean onGesture(Gesture gesture) {
                 if (gesture == Gesture.TAP) {
+                    /*
                     TextView textView = (TextView)findViewById(R.id.translation_text_view);
                     String currentText = (String)textView.getText();
                     if(currentText.equals(spanishText)) {
@@ -84,16 +84,20 @@ public class TranslationActivity extends BaseSpeakEasyActivity {
                     } else if(currentText.equals(englishText)) {
                         textView.setText(spanishText);
                     }
+                    */
+                    finish();
                     return true;
                 } else if (gesture == Gesture.TWO_TAP) {
                     // do something on two finger tap
-                    openOptionsMenu();
+                    finish();
                     return true;
                 } else if (gesture == Gesture.SWIPE_RIGHT) {
                     // do something on right (forward) swipe
+                    finish();
                     return true;
                 } else if (gesture == Gesture.SWIPE_LEFT) {
                     // do something on left (backwards) swipe
+                    finish();
                     return true;
                 }
                 return false;
@@ -120,6 +124,7 @@ public class TranslationActivity extends BaseSpeakEasyActivity {
      */
     @Override
     public boolean onGenericMotionEvent(MotionEvent event) {
+        super.onGenericMotionEvent(event);
         if (mGestureDetector != null) {
             return mGestureDetector.onMotionEvent(event);
         }

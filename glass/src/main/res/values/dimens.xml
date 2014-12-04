@@ -26,6 +26,9 @@
     <dimen name="suggested_phrase_item_height">40dip</dimen>
 
     <!-- The margins around the current phrase. -->
-    <dimen name="current_phrase_margins">15dip</dimen>
+    <dimen name="current_phrase_top_margin">60dip</dimen>
+
+    <!-- The margins around the current phrase. -->
+    <dimen name="current_phrase_bottom_margin">20dip</dimen>
 
 </resources>

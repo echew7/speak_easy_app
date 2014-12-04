@@ -13,18 +13,17 @@ import com.google.android.glass.touchpad.GestureDetector;
  */
 public class SuggestedPhrasesListView extends SwipeListView {
 
-    interface onDisplayedPhraseChangedListener {
+    interface OnDisplayedPhraseChangedListener {
         void onDisplayedPhraseChanged();
     }
 
     private int currentPosition = 0;
     private GestureDetector mGestureDetector;
-    private onDisplayedPhraseChangedListener callback;
+    private OnDisplayedPhraseChangedListener callback;
 
     public SuggestedPhrasesListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         initializeGestureDetector(context);
-
     }
 
     public SuggestedPhrasesListView(Context context, AttributeSet attrs) {
@@ -79,14 +78,18 @@ public class SuggestedPhrasesListView extends SwipeListView {
                 ? phrase.getNativePhrase() : phrase.getTranslatedPhrase();
     }
 
-    public void setDisplayedPhraseChangedCallback(onDisplayedPhraseChangedListener callback) {
+    public void setDisplayedPhraseChangedCallback(OnDisplayedPhraseChangedListener callback) {
         this.callback = callback;
+    }
+
+    private void playCurrentPhrase() {
+        Phrase phrase = (Phrase) getItemAtPosition(currentPosition);
+
     }
 
     private void initializeGestureDetector(Context context) {
         mGestureDetector = createGestureDetector(context);
     }
-
 
     private GestureDetector createGestureDetector(Context context) {
         GestureDetector gestureDetector = new GestureDetector(context);
@@ -101,6 +104,7 @@ public class SuggestedPhrasesListView extends SwipeListView {
                     return true;
                 } else if (gesture == Gesture.TWO_TAP) {
                     // do something on two finger tap
+                    playCurrentPhrase();
                     return true;
                 } else if (gesture == Gesture.SWIPE_RIGHT) {
                     // do something on right (forward) swipe

@@ -1,7 +1,9 @@
 package speakeasy.com.speakeasy;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.view.WindowManager;
@@ -16,8 +18,9 @@ import java.util.ArrayList;
 /**
  * Created by Eric on 12/2/14.
  */
-public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedPhrasesListView.onDisplayedPhraseChangedListener {
+public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedPhrasesListView.OnDisplayedPhraseChangedListener, ModeManager.OnModeChangedListener {
 
+    private ModeManager modeManager;
     private SuggestedPhrasesListView suggestedPhrasesList;
     private PhraseItemAdapter phraseItemAdapter;
     private TextView currentPhrase;
@@ -26,7 +29,15 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
 
     @Override
     public void onDisplayedPhraseChanged() {
+        Log.d("R", "Registering Gesture");
+        modeManager.registerGesture();
         updateDisplayedPhrases();
+    }
+
+    @Override
+    public void onModeChanged() {
+        Intent translation = new Intent(this, TranslationActivity.class);
+        startActivity(translation);
     }
 
     @Override
@@ -37,7 +48,22 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
         initialize();
     }
 
+    @Override
+    protected void onResume() {
+        super.onResume();
+        modeManager.beginPhrasesMode();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onResume();
+        modeManager.endPhrasesMode();
+    }
+
     private void initialize() {
+        modeManager = getModeManager();
+        modeManager.registerCallback(this);
+
         suggestedPhrasesList = (SuggestedPhrasesListView) this.findViewById(R.id.suggested_phrases);
         ArrayList<Phrase> phrases = new ArrayList<Phrase>();
         phrases.add(new Phrase("Hello", "Hola"));
@@ -94,5 +120,4 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
         prevPhrase.setText(suggestedPhrasesList.getPreviouslyDisplayedPhrase());
         nextPhrase.setText(suggestedPhrasesList.getNextDisplayedPhrase());
     }
-
 }

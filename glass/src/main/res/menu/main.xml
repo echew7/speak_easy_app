@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id="@+id/tutorial_mode"
-        android:title="@string/tutorial_mode" />
-    <item android:id="@+id/phrases_mode"
-        android:title="@string/phrases_mode" />
-    <item android:id="@+id/translation_mode"
-        android:title="@string/translation_mode" />
+        android:title="@string/yes" />
+    <item android:id="@+id/speakeasy_mode"
+        android:title="@string/no" />
 </menu>

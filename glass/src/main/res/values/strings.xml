@@ -4,17 +4,19 @@
     <string name="app_name">SpeakEasy</string>
     <string name="hello_world">Hello world!</string>
 
+    <!-- Modes -->
+    <string name="tutorial_mode">Would you like a tutorial?</string>
+
+    <!-- Menu Items -->
+    <string name="yes">Definitely!</string>
+    <string name="no">Nope, I\'m all good!</string>
+
     <!-- Activity Titles -->
     <string name="title_activity_base">Base</string>
     <string name="title_activity_main">Main</string>
     <string name="title_activity_tutorial">Tutorial</string>
     <string name="title_activity_phrases">Phrases</string>
     <string name="title_activity_translation">Translation</string>
-
-    <!-- Menu Items -->
-    <string name="tutorial_mode">Tutorial Mode</string>
-    <string name="phrases_mode">Phrases Mode</string>
-    <string name="translation_mode">Translation Mode</string>
 
     <!-- Voice Commands -->
     <string name="glass_voice_trigger">Start SpeakEasy</string>

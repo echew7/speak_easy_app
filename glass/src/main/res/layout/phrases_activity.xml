@@ -9,18 +9,16 @@
     <RelativeLayout
         android:id="@+id/body_layout"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/glass_card_body_height_no_footer"
+        android:layout_height="match_parent"
         android:layout_marginLeft="@dimen/glass_card_margin"
-        android:layout_marginTop="@dimen/glass_card_margin"
         android:layout_marginRight="@dimen/glass_card_margin"
-        android:layout_marginBottom="@dimen/glass_card_margin"
         tools:ignore="UselessLeaf"
         >
 
         <TextView
             android:id="@+id/current_phrase"
-            android:layout_marginTop="@dimen/current_phrase_margins"
-            android:layout_margin="@dimen/current_phrase_margins"
+            android:layout_marginTop="@dimen/current_phrase_top_margin"
+            android:layout_marginBottom="@dimen/current_phrase_bottom_margin"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerHorizontal="true"
@@ -40,7 +38,7 @@
 
         <speakeasy.com.speakeasy.SuggestedPhrasesListView
             android:id="@+id/suggested_phrases"
-            android:layout_width="fill_parent"
+            android:layout_width="wrap_content"
             android:layout_height="@dimen/suggested_phrase_item_height"
             android:layout_centerHorizontal="true"
             android:layout_below="@id/prev_phrase"
