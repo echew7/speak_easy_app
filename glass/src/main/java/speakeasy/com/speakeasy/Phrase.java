@@ -6,12 +6,15 @@ package speakeasy.com.speakeasy;
 public class Phrase {
 
     private String nativePhrase;
-
     private String translatedPhrase;
+    private String nativePhraseAudio;
+    private String translatedPhraseAudio;
 
-    public Phrase(String nativePhrase, String translatedPhrase) {
+    public Phrase(String nativePhrase, String translatedPhrase, String nativePhraseAudio, String translatedPhraseAudio) {
         this.nativePhrase = nativePhrase;
         this.translatedPhrase = translatedPhrase;
+        this.nativePhraseAudio = nativePhraseAudio;
+        this.translatedPhraseAudio = translatedPhraseAudio;
     }
 
     public String getNativePhrase() {
@@ -28,6 +31,22 @@ public class Phrase {
 
     public void setTranslatedPhrase(String translatedPhrase) {
         this.translatedPhrase = translatedPhrase;
+    }
+
+    public String getTranslatedPhraseAudio() {
+        return translatedPhraseAudio;
+    }
+
+    public void setTranslatedPhraseAudio(String translatedPhraseAudio) {
+        this.translatedPhraseAudio = translatedPhraseAudio;
+    }
+
+    public String getNativePhraseAudio() {
+        return nativePhraseAudio;
+    }
+
+    public void setNativePhraseAudio(String nativePhraseAudio) {
+        this.nativePhraseAudio = nativePhraseAudio;
     }
 
 }

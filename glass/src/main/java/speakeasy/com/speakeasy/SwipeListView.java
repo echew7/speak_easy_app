@@ -13,7 +13,8 @@ import com.google.android.glass.touchpad.GestureDetector;
  */
 public class SwipeListView extends ListView {
 
-    private Context context;
+    protected Context context;
+
     private GestureDetector mGestureDetector;
     private int rowHeight;
 

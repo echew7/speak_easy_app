@@ -1,12 +1,16 @@
 package speakeasy.com.speakeasy;
 
 import android.content.Context;
+import android.content.res.AssetFileDescriptor;
+import android.media.MediaPlayer;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.widget.ListAdapter;
 
 import com.google.android.glass.touchpad.Gesture;
 import com.google.android.glass.touchpad.GestureDetector;
+
+import java.io.IOException;
 
 /**
  * Created by Eric on 12/4/14.
@@ -20,20 +24,24 @@ public class SuggestedPhrasesListView extends SwipeListView {
     private int currentPosition = 0;
     private GestureDetector mGestureDetector;
     private OnDisplayedPhraseChangedListener callback;
+    private MediaPlayer mp;
 
     public SuggestedPhrasesListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);
         initializeGestureDetector(context);
+        this.mp = new MediaPlayer();
     }
 
     public SuggestedPhrasesListView(Context context, AttributeSet attrs) {
         super(context, attrs);
         initializeGestureDetector(context);
+        this.mp = new MediaPlayer();
     }
 
     public SuggestedPhrasesListView(Context context) {
         super(context);
         initializeGestureDetector(context);
+        this.mp = new MediaPlayer();
     }
 
     @Override
@@ -72,19 +80,38 @@ public class SuggestedPhrasesListView extends SwipeListView {
         return currentPosition > 0 ? getPhraseAtPosition(currentPosition - 1) : "";
     }
 
-    public String getPhraseAtPosition(int position) {
+    public void setDisplayedPhraseChangedCallback(OnDisplayedPhraseChangedListener callback) {
+        this.callback = callback;
+    }
+
+    private String getPhraseAtPosition(int position) {
         Phrase phrase = (Phrase) this.getItemAtPosition(position);
         return ((PhraseItemAdapter)this.getAdapter()).isNativeMode()
                 ? phrase.getNativePhrase() : phrase.getTranslatedPhrase();
     }
 
-    public void setDisplayedPhraseChangedCallback(OnDisplayedPhraseChangedListener callback) {
-        this.callback = callback;
+    private String getPhraseAudioAtPosition(int position) {
+        Phrase phrase = (Phrase) this.getItemAtPosition(position);
+        return ((PhraseItemAdapter)this.getAdapter()).isNativeMode()
+                ? phrase.getNativePhraseAudio() : phrase.getTranslatedPhraseAudio();
     }
 
     private void playCurrentPhrase() {
-        Phrase phrase = (Phrase) getItemAtPosition(currentPosition);
-
+        String audioFile = getPhraseAudioAtPosition(currentPosition);
+        if (audioFile.equals("")) return;
+        try {
+            mp.stop();
+            mp.reset();
+            AssetFileDescriptor afd;
+            afd = context.getAssets().openFd(audioFile);
+            mp.setDataSource(afd.getFileDescriptor(),afd.getStartOffset(),afd.getLength());
+            mp.prepare();
+            mp.start();
+        } catch (IllegalStateException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     private void initializeGestureDetector(Context context) {

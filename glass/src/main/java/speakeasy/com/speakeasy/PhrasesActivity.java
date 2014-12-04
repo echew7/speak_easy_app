@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.WindowManager;
 import android.view.animation.Animation;
@@ -30,7 +31,6 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
     @Override
     public void onDisplayedPhraseChanged() {
         Log.d("R", "Registering Gesture");
-        modeManager.registerGesture();
         updateDisplayedPhrases();
     }
 
@@ -61,14 +61,15 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
     }
 
     private void initialize() {
+
         modeManager = getModeManager();
         modeManager.registerCallback(this);
 
         suggestedPhrasesList = (SuggestedPhrasesListView) this.findViewById(R.id.suggested_phrases);
         ArrayList<Phrase> phrases = new ArrayList<Phrase>();
-        phrases.add(new Phrase("Hello", "Hola"));
-        phrases.add(new Phrase("Goodbye", "Adios"));
-        phrases.add(new Phrase("How are you?", "Como estas?"));
+        phrases.add(new Phrase("Hello", "Hola", "", "Hola.m4a"));
+        phrases.add(new Phrase("Water", "Agua", "", "Agua.m4a"));
+        phrases.add(new Phrase("How are you?", "Como estas?", "", ""));
         phraseItemAdapter = new PhraseItemAdapter(this, R.layout.suggested_phrase_item, phrases);
         suggestedPhrasesList.setAdapter(phraseItemAdapter);
         suggestedPhrasesList.setRowHeight((int) getResources().getDimension(R.dimen.suggested_phrase_item_height));
@@ -119,5 +120,12 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
         currentPhrase.setText(suggestedPhrasesList.getCurrentlyDisplayedPhrase());
         prevPhrase.setText(suggestedPhrasesList.getPreviouslyDisplayedPhrase());
         nextPhrase.setText(suggestedPhrasesList.getNextDisplayedPhrase());
+    }
+
+    @Override
+    public boolean onGenericMotionEvent(MotionEvent event) {
+        super.onGenericMotionEvent(event);
+        modeManager.registerGesture();
+        return false;
     }
 }

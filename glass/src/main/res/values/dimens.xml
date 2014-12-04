@@ -29,6 +29,6 @@
     <dimen name="current_phrase_top_margin">60dip</dimen>
 
     <!-- The margins around the current phrase. -->
-    <dimen name="current_phrase_bottom_margin">20dip</dimen>
+    <dimen name="current_phrase_bottom_margin">10dip</dimen>
 
 </resources>
