@@ -10,6 +10,11 @@ public class Phrase {
     private String nativePhraseAudio;
     private String translatedPhraseAudio;
 
+    public Phrase(String nativePhrase, String translatedPhrase) {
+        this.nativePhrase = nativePhrase;
+        this.translatedPhrase = translatedPhrase;
+    }
+
     public Phrase(String nativePhrase, String translatedPhrase, String nativePhraseAudio, String translatedPhraseAudio) {
         this.nativePhrase = nativePhrase;
         this.translatedPhrase = translatedPhrase;

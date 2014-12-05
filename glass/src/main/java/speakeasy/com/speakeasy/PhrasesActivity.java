@@ -24,7 +24,6 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
     private ModeManager modeManager;
     private SuggestedPhrasesListView suggestedPhrasesList;
     private PhraseItemAdapter phraseItemAdapter;
-    private TextView currentPhrase;
     private TextSwitcher prevPhrase;
     private TextSwitcher nextPhrase;
 
@@ -36,6 +35,7 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
 
     @Override
     public void onModeChanged() {
+        Log.d("S", "Starting activity translate");
         Intent translation = new Intent(this, TranslationActivity.class);
         startActivity(translation);
     }
@@ -57,6 +57,7 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
     @Override
     protected void onPause() {
         super.onResume();
+        Log.d("P", "Pausing");
         modeManager.endPhrasesMode();
     }
 
@@ -75,7 +76,6 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
         suggestedPhrasesList.setRowHeight((int) getResources().getDimension(R.dimen.suggested_phrase_item_height));
         suggestedPhrasesList.setDisplayedPhraseChangedCallback(this);
 
-        currentPhrase = (TextView) findViewById(R.id.current_phrase);
         prevPhrase = (TextSwitcher) findViewById(R.id.prev_phrase);
         nextPhrase = (TextSwitcher) findViewById(R.id.next_phrase);
 
@@ -117,7 +117,6 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
     }
 
     private void updateDisplayedPhrases() {
-        currentPhrase.setText(suggestedPhrasesList.getCurrentlyDisplayedPhrase());
         prevPhrase.setText(suggestedPhrasesList.getPreviouslyDisplayedPhrase());
         nextPhrase.setText(suggestedPhrasesList.getNextDisplayedPhrase());
     }
