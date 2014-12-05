@@ -92,13 +92,11 @@ public class SuggestedPhrasesListView extends SwipeListView {
 
     private String getPhraseAudioAtPosition(int position) {
         Phrase phrase = (Phrase) this.getItemAtPosition(position);
-        return ((PhraseItemAdapter)this.getAdapter()).isNativeMode()
-                ? phrase.getNativePhraseAudio() : phrase.getTranslatedPhraseAudio();
+        return phrase.getTranslatedPhraseAudio();
     }
 
     private void playCurrentPhrase() {
         String audioFile = getPhraseAudioAtPosition(currentPosition);
-        if (audioFile.equals("")) return;
         try {
             mp.stop();
             mp.reset();

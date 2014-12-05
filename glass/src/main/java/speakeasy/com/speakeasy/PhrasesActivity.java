@@ -68,9 +68,16 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
 
         suggestedPhrasesList = (SuggestedPhrasesListView) this.findViewById(R.id.suggested_phrases);
         ArrayList<Phrase> phrases = new ArrayList<Phrase>();
-        phrases.add(new Phrase("Hello", "Hola", "", "Hola.m4a"));
-        phrases.add(new Phrase("Water", "Agua", "", "Agua.m4a"));
-        phrases.add(new Phrase("How are you?", "Como estas?", "", ""));
+        phrases.add(new Phrase("I'm ready to order", "Estoy listo para ordenar", "Estoy Listo Para Ordenar.m4a"));
+        phrases.add(new Phrase("I am still not ready to order", "Todavia no estoy listo para ordenar", "Todavia No Estoy Listo Para Ordenar.m4a"));
+        phrases.add(new Phrase("Thank you", "Gracias", "Gracias.m4a"));
+        phrases.add(new Phrase("No thank you", "No gracias", "No Gracias.m4a"));
+        phrases.add(new Phrase("Can I have a coffee please?", "Me puede dar cafe por favor?", "Me puede Dar Cafe Por Favor.m4a"));
+        phrases.add(new Phrase("Can I have the chicken sandwich?", "Me puede dar el sandwich de pollo?", "Me Puede Dar El Sandwich De Pollo.m4a"));
+        phrases.add(new Phrase("Can you bring me a glass of wine?", "Me puede trader un vaso de vino?", "Me Puede Trader Un Vaso De Vino.m4a"));
+        phrases.add(new Phrase("Can you bring me the check?", "Me puede traer la cuenta?", "Me Puede Traer La Cuenta.m4a"));
+        phrases.add(new Phrase("Yes. Can I have some water?", "Si me puede dar agua?", "Si Me Puede Dar Agua.m4a"));
+
         phraseItemAdapter = new PhraseItemAdapter(this, R.layout.suggested_phrase_item, phrases);
         suggestedPhrasesList.setAdapter(phraseItemAdapter);
         suggestedPhrasesList.setRowHeight((int) getResources().getDimension(R.dimen.suggested_phrase_item_height));
