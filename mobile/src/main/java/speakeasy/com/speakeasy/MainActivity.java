@@ -66,15 +66,18 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     private void addTabs(ActionBar actionBar)
     {
         ActionBar.Tab tab1=actionBar.newTab();
-        tab1.setIcon(R.drawable.progress_tab);
+        //tab1.setIcon(R.drawable.progress_tab);
+        tab1.setText("Progress");
         tab1.setTabListener(this);
 
         ActionBar.Tab tab2=actionBar.newTab();
-        tab2.setIcon(R.drawable.missed_words_tab);
+        //tab2.setIcon(R.drawable.missed_words_tab);
+        tab2.setText("Words");
         tab2.setTabListener(this);
 
         ActionBar.Tab tab3=actionBar.newTab();
-        tab3.setIcon(R.drawable.transcripts_tab);
+        //tab3.setIcon(R.drawable.transcripts_tab);
+        tab3.setText("Transcript");
         tab3.setTabListener(this);
 
 

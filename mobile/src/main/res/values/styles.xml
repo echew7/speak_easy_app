@@ -4,7 +4,7 @@
     <style name="AppTheme" parent="android:Theme.Holo.Light">
         <!-- Customize your theme here. -->
         <item name="android:actionBarStyle">@style/ActionBar</item>
-
+        <item name="android:actionBarTabTextStyle">@style/MyActionBarTabText</item>
     </style>
 
     <style name="ActionBar" parent="android:style/Widget.Holo.ActionBar">
@@ -14,6 +14,13 @@
 
     <style name="TitleTextStyle" parent="android:style/TextAppearance.Holo.Widget.ActionBar.Title">
         <item name="android:textColor">#9ad7ca</item>
+    </style>
+
+    <!-- ActionBar tabs text styles -->
+    <style name="MyActionBarTabText"
+        parent="android:style/Widget.Holo.ActionBar.TabText">
+        <item name="android:textColor">#2cac91</item>
+        <item name="android:titleTextStyle">@style/TitleTextStyle</item>
     </style>
 
 </resources>

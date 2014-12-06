@@ -29,18 +29,29 @@
                     android:textColor="#3498db"
                     android:fontFamily="Verdana"/>
 
-                <HorizontalScrollView
+                <FrameLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="240dp"
-                    android:scrollbarAlwaysDrawHorizontalTrack="true">
-                    <ImageView
-                        android:id="@+id/new_words_image"
-                        android:src="@drawable/new_words_daily"
-                        android:layout_width="485dp"
-                        android:adjustViewBounds="true"
-                        android:layout_height="match_parent"
-                        android:scaleType="fitStart"/>
-                </HorizontalScrollView>
+                    android:layout_height="wrap_content"
+                    android:background="#000"
+                    >
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="240dp"
+                        android:layout_margin="1px"
+                        android:background="#fff"
+                        android:fadeScrollbars="false"
+                        android:scrollbarAlwaysDrawHorizontalTrack="true">
+                        <ImageView
+                            android:id="@+id/new_words_image"
+                            android:src="@drawable/new_words_daily"
+                            android:layout_width="485dp"
+                            android:adjustViewBounds="true"
+                            android:layout_height="match_parent"
+                            android:scaleType="fitStart"/>
+                    </HorizontalScrollView>
+                </FrameLayout>
+
+
 
                 <Spinner
                     android:id="@+id/new_words_spinner"
@@ -62,19 +73,28 @@
                     android:textSize="24dp"
                     android:textColor="#3498db"
                     android:fontFamily="Verdana"/>
-
-                <HorizontalScrollView
+                <FrameLayout
                     android:layout_width="wrap_content"
-                    android:layout_height="240dp"
-                    android:scrollbarAlwaysDrawHorizontalTrack="true">
-                    <ImageView
-                        android:id="@+id/missed_words_image"
-                        android:src="@drawable/new_words_daily"
-                        android:layout_width="485dp"
-                        android:layout_height="match_parent"
-                        android:adjustViewBounds="true"
-                        android:scaleType="fitStart"/>
-                </HorizontalScrollView>
+                    android:layout_height="wrap_content"
+                    android:background="#000"
+                    >
+                    <HorizontalScrollView
+                        android:layout_width="wrap_content"
+                        android:layout_height="240dp"
+                        android:layout_margin="1px"
+                        android:background="#fff"
+                        android:fadeScrollbars="false"
+                        android:scrollbarAlwaysDrawHorizontalTrack="true">
+                        <ImageView
+                            android:id="@+id/missed_words_image"
+                            android:src="@drawable/new_words_daily"
+                            android:layout_width="485dp"
+                            android:layout_height="match_parent"
+                            android:adjustViewBounds="true"
+                            android:scaleType="fitStart"/>
+                    </HorizontalScrollView>
+                </FrameLayout>
+
 
                 <Spinner
                     android:id="@+id/missed_words_spinner"

@@ -4,8 +4,8 @@
 
     <application
         android:allowBackup="true"
-        android:icon="@drawable/logo"
-        android:label=""
+        android:icon="@drawable/squarelogo"
+        android:label="SpeakEasy"
         android:theme="@style/AppTheme" >
         <activity
             android:name="speakeasy.com.speakeasy.MainActivity" >
