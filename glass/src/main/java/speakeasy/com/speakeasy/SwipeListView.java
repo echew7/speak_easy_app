@@ -18,7 +18,7 @@ public class SwipeListView extends ListView {
     private GestureDetector mGestureDetector;
     private int rowHeight;
 
-    final static private int ANIMATION_TIME = 1000;
+    final static private int ANIMATION_TIME = 500;
 
     public SwipeListView(Context context, AttributeSet attrs, int defStyle) {
         super(context, attrs, defStyle);

@@ -81,10 +81,10 @@ public class TranslationActivity extends BaseSpeakEasyActivity implements VoiceR
     private void initializeVoiceRecognition() {
         translationToPhrase = new HashMap<String, String>();
         translationToPhrase.put("Bienvenido a nuestro restaurante", "Welcome to our restaurant");
-        translationToPhrase.put("Quieres algo de beber", "Would you like something to drink");
+        translationToPhrase.put("Quieres algo para beber", "Would you like something to drink");
         translationToPhrase.put("Por supuesto", "Of course");
         translationToPhrase.put("Que quieres comer", "What would you like to eat");
-        translationToPhrase.put("Muy bien", "Very well");
+        //translationToPhrase.put("Muy bien", "Very well");
         voiceRecognitionRunnable = new VoiceRecognitionRunnable(this, extractTranslations());
         voiceRecognitionRunnable.setOnVoiceRecognizedListener(this);
         Thread thread = new Thread(voiceRecognitionRunnable);

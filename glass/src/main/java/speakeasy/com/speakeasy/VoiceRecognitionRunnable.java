@@ -31,6 +31,7 @@ public class VoiceRecognitionRunnable extends VoiceListener.SimpleVoiceListener 
     private ArrayList<String> voiceConfigList;
     private ArrayList<String> commands;
     private OnVoiceRecognizedListener callback;
+    private Boolean running = true;
 
     //Handlers
     private Handler handler = null;
@@ -38,6 +39,10 @@ public class VoiceRecognitionRunnable extends VoiceListener.SimpleVoiceListener 
     public VoiceRecognitionRunnable(Context context, ArrayList<String> commands) {
         this.context = context;
         this.commands = commands;
+    }
+
+    public void terminate() {
+        running = false;
     }
 
     /*
@@ -48,6 +53,8 @@ public class VoiceRecognitionRunnable extends VoiceListener.SimpleVoiceListener 
     @Override
     public void run() {
         initializeVoiceCommands();
+        while (running) {}
+        voiceInputHelper = null;
     }
 
     public void setOnVoiceRecognizedListener(OnVoiceRecognizedListener callback) {

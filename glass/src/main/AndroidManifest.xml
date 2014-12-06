@@ -42,6 +42,27 @@
             android:icon="@drawable/ic_glass_logo"
             android:label="@string/title_activity_translation" >
         </activity>
+        <activity
+            android:name="speakeasy.com.speakeasy.TutorialCardActivity" >
+        </activity>
+        <activity
+            android:name="speakeasy.com.speakeasy.PronunciationTutorialCard" >
+        </activity>
+        <activity
+            android:name="speakeasy.com.speakeasy.LiveTranslationTutorialCard" >
+        </activity>
+        <activity
+            android:name="speakeasy.com.speakeasy.SwipeTutorialCard" >
+        </activity>
+        <activity
+            android:name="speakeasy.com.speakeasy.TranslateTutorialCard" >
+        </activity>
+        <activity
+            android:name="speakeasy.com.speakeasy.TutorialTranslationActivity" >
+        </activity>
+        <activity
+            android:name="speakeasy.com.speakeasy.DoneTutorialCard" >
+        </activity>
     </application>
 
 </manifest>

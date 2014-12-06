@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.res.AssetFileDescriptor;
 import android.media.MediaPlayer;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.widget.ListAdapter;
 
@@ -21,9 +22,14 @@ public class SuggestedPhrasesListView extends SwipeListView {
         void onDisplayedPhraseChanged();
     }
 
+    interface OnGestureListener {
+        void onGesture(Gesture gesture);
+    }
+
     private int currentPosition = 0;
     private GestureDetector mGestureDetector;
     private OnDisplayedPhraseChangedListener callback;
+    private OnGestureListener gCallback;
     private MediaPlayer mp;
 
     public SuggestedPhrasesListView(Context context, AttributeSet attrs, int defStyle) {
@@ -55,6 +61,7 @@ public class SuggestedPhrasesListView extends SwipeListView {
         super.smoothScrollToNextItem();
         if (currentPosition < (getCount() - 1)) {
             currentPosition++;
+            Log.d("CurrentPosition", "Current Position: " + currentPosition);
             callback.onDisplayedPhraseChanged();
         }
     }
@@ -64,6 +71,7 @@ public class SuggestedPhrasesListView extends SwipeListView {
         super.smoothScrollToPreviousItem();
         if (currentPosition > 0) {
             currentPosition--;
+            Log.d("CurrentPosition", "Current Position: " + currentPosition);
             callback.onDisplayedPhraseChanged();
         }
     }
@@ -82,6 +90,10 @@ public class SuggestedPhrasesListView extends SwipeListView {
 
     public void setDisplayedPhraseChangedCallback(OnDisplayedPhraseChangedListener callback) {
         this.callback = callback;
+    }
+
+    public void setGestureCallback(OnGestureListener callback) {
+        this.gCallback = callback;
     }
 
     private String getPhraseAtPosition(int position) {
@@ -122,7 +134,7 @@ public class SuggestedPhrasesListView extends SwipeListView {
         gestureDetector.setBaseListener(new GestureDetector.BaseListener() {
             @Override
             public boolean onGesture(Gesture gesture) {
-
+                if (gCallback != null) gCallback.onGesture(gesture);
                 if (gesture == Gesture.TAP) {
                     // do something on tap
                     changeDisplayMode();
