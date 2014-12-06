@@ -101,34 +101,24 @@ public class TutorialActivity extends BaseSpeakEasyActivity
     @Override
     protected void onResume() {
         super.onResume();
-        ArrayList<Phrase> phrases = new ArrayList<Phrase>();
-        phrases.add(new Phrase("I'm ready to order", "Estoy listo para ordenar", "Estoy Listo Para Ordenar.m4a"));
-        phrases.add(new Phrase("I am still not ready to order", "Todavia no estoy listo para ordenar", "Todavia No Estoy Listo Para Ordenar.m4a"));
-        phrases.add(new Phrase("Thank you", "Gracias", "Gracias.m4a"));
-        phraseItemAdapter = new PhraseItemAdapter(this, R.layout.suggested_phrase_item, phrases);
-        suggestedPhrasesList.setAdapter(phraseItemAdapter);
-        suggestedPhrasesList.setRowHeight((int) getResources().getDimension(R.dimen.suggested_phrase_item_height));
-        suggestedPhrasesList.setDisplayedPhraseChangedCallback(this);
-        suggestedPhrasesList.setGestureCallback(this);
-        updateDisplayedPhrases();
+        suggestedPhrasesList.reset();
     }
 
     private void initialize() {
 
         suggestedPhrasesList = (SuggestedPhrasesListView) this.findViewById(R.id.tut_suggested_phrases);
-        /*
+
         ArrayList<Phrase> phrases = new ArrayList<Phrase>();
         phrases.add(new Phrase("I'm ready to order", "Estoy listo para ordenar", "Estoy Listo Para Ordenar.m4a"));
         phrases.add(new Phrase("I am still not ready to order", "Todavia no estoy listo para ordenar", "Todavia No Estoy Listo Para Ordenar.m4a"));
         phrases.add(new Phrase("Thank you", "Gracias", "Gracias.m4a"));
-        //phrases.add(new Phrase("No thank you", "No gracias", "No Gracias.m4a"));
 
         phraseItemAdapter = new PhraseItemAdapter(this, R.layout.suggested_phrase_item, phrases);
         suggestedPhrasesList.setAdapter(phraseItemAdapter);
         suggestedPhrasesList.setRowHeight((int) getResources().getDimension(R.dimen.suggested_phrase_item_height));
         suggestedPhrasesList.setDisplayedPhraseChangedCallback(this);
         suggestedPhrasesList.setGestureCallback(this);
-        */
+
 
         prevPhrase = (TextSwitcher) findViewById(R.id.tut_prev_phrase);
         nextPhrase = (TextSwitcher) findViewById(R.id.tut_next_phrase);

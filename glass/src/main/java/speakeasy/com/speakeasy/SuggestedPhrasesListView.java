@@ -76,6 +76,12 @@ public class SuggestedPhrasesListView extends SwipeListView {
         }
     }
 
+    public void reset() {
+        this.setSelectionAfterHeaderView();
+        currentPosition = 0;
+        callback.onDisplayedPhraseChanged();
+    }
+
     public String getCurrentlyDisplayedPhrase() {
         return getPhraseAtPosition(currentPosition);
     }

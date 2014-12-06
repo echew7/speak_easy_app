@@ -51,6 +51,7 @@ public class PhrasesActivity extends BaseSpeakEasyActivity implements SuggestedP
     @Override
     protected void onResume() {
         super.onResume();
+        suggestedPhrasesList.reset();
         modeManager.beginPhrasesMode();
     }
 
